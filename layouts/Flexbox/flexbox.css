@@ -1,0 +1,27 @@
+ul {
+	/* set the parent container to flex */
+	display: flex;
+	/* determine the alignment of the flex-items: horizontal (row) or vertical(column)? */
+	flex-direction: row;
+	/* fit all items within one row/column or wrap to a new line */
+	flex-wrap: wrap;
+	/* define how flex items are laid out on the main axis (horizontal) */
+	justify-content: flex-start;
+	/* define how items are laid out on cross axis(vertically). Align-content is specific to multi-line or wrapped items. Otherwise, use align-items */
+	align-content: center;
+	list-style: none;
+}
+
+li {
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	text-align: center;
+	line-height: 90px;
+	background-color: teal;
+}
+
+li:nth-child(1){
+	/* a flex item can be re-ordered based on order value. The default is 0. Think z-index here. If an element is given a value of 1 and all others default to 0, then the element with value of 1 will be listed last because order goes from lowest to highest values. */
+	order: 1;
+}
