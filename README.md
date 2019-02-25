@@ -10,7 +10,7 @@ LAYOUTS:
 * Grid: simple layout using CSS Grid system
 * Grid w/ Floats: simple web page (rows/columns) using positioning/floats
 
-# References
+### References
 HTML5 & Liquid Layout: Jon Duckett's HTML & CSS 
 
 ### Technologies Used:
