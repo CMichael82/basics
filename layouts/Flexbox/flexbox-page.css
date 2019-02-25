@@ -24,7 +24,7 @@ a {
 .content {
 	display: flex;
 	flex-wrap: wrap;
-	height: 600px;
+	height: auto;
 }
 
 .main {
@@ -36,6 +36,10 @@ a {
 
 h1 {
 	text-align: center;
+}
+
+img {
+	width: 100%;
 }
 
 .asideLeft,
@@ -62,10 +66,30 @@ h1 {
 }
 
 footer {
+	width: 100%;
 	align-items: center;
 	background-color: slategray;
 	color: white;
 	display: flex;
 	height: 50px;
 	justify-content: center;
+}
+
+/*Media Queries*/
+
+/* Width at 1024px and below */
+@media screen and (max-width: 1024px) {
+	img {
+		width: 80%;
+		height: auto;
+	}
+}
+
+@media screen and (max-width: 768px) {
+
+	.main,
+	.asideLeft,
+	.asideRight {
+		flex: 0 1 100%;
+	}
 }
