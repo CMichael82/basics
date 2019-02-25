@@ -1,7 +1,11 @@
+/* ///////////////////START GRID ROW/COLUMN SETUP///////////////////// */
 .row,
 .column {
 	box-sizing: border-box;
 }
+
+/* ////MAINTAIN MARGINS & CLEAR FLOATS///
+setting display to table creates a hidden table-cell and new block formatting. the :before pseudo-element prevents a top-margin collapse (tables do not collapse margins) and the :after pseudo-element allows floats to be cleared */
 
 .row:before,
 .row:after {
@@ -12,60 +16,127 @@
 .row:after {
 	clear: both;
 }
+/* ////////////////////////////////////////// */
 
+/* set postiion to relative so that any absolute positioned content to be postitioned relative to its column. set float left for horizontal alignment. */
 .column {
 	position: relative;
 	float: left;
 }
 
-.column + .column {
+/* create a left margin for every column except the first one */
+.column+.column {
 	margin-left: 1.6%;
 }
 
-.column-1 {
-	width: 6.86666666667%;
+/* ////////// COLUMNS BASED ON A ****95%**** SCREEN WIDTH //////////////
+** find column 1 width: 95 - (1.6 * 11 (for gutters)) = 77.4 / 12 (total columns) = 6.45% **
+***ADD to each additional column for col-2 through 12: 6.45 + 1.6 = 8.05%  *** */
+
+.content {
+	margin: 0 auto;
+	width: 95%;
 }
 
-.column-2 {
-	width: 15.3333333333%;
+.col-1 {
+	width: 6.45%;
 }
 
-.column-3 {
-	width: 23.8%;
+.col-2 {
+	width: 14.5%;
 }
 
-.column-4 {
-	width: 32.2666666667%;
+.col-3 {
+	width: 22.55%;
 }
 
-.column-5 {
-	width: 40.7333333333%;
+.col-4 {
+	width: 30.6%;
 }
 
-.column-6 {
-	width: 49.2%;
+.col-5 {
+	width: 38.65%;
 }
 
-.column-7 {
-	width: 57.6666666667%;
+.col-6 {
+	width: 46.7%;
 }
 
-.column-8 {
-	width: 66.1333333333%;
+.col-7 {
+	width: 54.75%;
 }
 
-.column-9 {
-	width: 74.6%;
+.col-8 {
+	width: 62.8%;
 }
 
-.column-10 {
-	width: 83.0666666667%;
+.col-9 {
+	width: 70.85%;
 }
 
-.column-11 {
-	width: 91.5333333333%;
+.col-10 {
+	width: 78.9%;
 }
 
-.column-12 {
+.col-11 {
+	width: 86.95;
+}
+
+.col-12 {
+	width: 95%;
+}
+
+/* END GRID ROW/COLUMN SETUP */
+
+nav {
+	align-items: center;
+	background-color: cadetblue;
 	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	padding: 10px;
+}
+
+li {
+	display: inline;
+	list-style: none;
+}
+
+img {
+	width: 100%;
+}
+
+footer {
+	background-color: slategray;
+	color: white;
+	height: 50px;
+	line-height: 3.0;
+	text-align: center;
+	width: 100%;
+}
+
+h1,
+h2 {
+	text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+	.col-2{
+		width: 22.55%;
+	}
+	.col-8 {
+		width: 46.7%;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.col-2,
+	.col-8 {
+		width: 95%;
+	}
 }
