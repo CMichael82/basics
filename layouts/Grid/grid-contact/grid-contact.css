@@ -1,0 +1,83 @@
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	display: grid;
+	grid-template-areas:
+		"navbar navbar navbar"
+		"info info form"
+		"footer footer footer";
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-row-gap: 10px;
+	margin: 0 auto;
+}
+
+.navbar {
+	background-color: indianred;
+	grid-area: navbar;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	height: 60px;
+	margin: 5px 5px 5px 15px;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: inline;
+	margin: 15px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.info {
+	grid-area: info;
+	padding: 50px;
+}
+
+span,
+#messageResult {
+	color: green;
+	margin-left: 5px;
+}
+
+.emailForm {
+	grid-area: form;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+input,
+button,
+textarea {
+	margin-top: 20px;
+}
+
+button {
+	background-color: #999;
+	color: white;
+	height: 50px;
+}
+
+.footer {
+	background-color: indianred;
+	color: white;
+	display: flex;
+	font-size: 14px;
+	grid-area: footer;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+
+
+}
