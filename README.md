@@ -12,8 +12,12 @@ LAYOUTS:
 * Grid-Contact: A grid layout which includes a simple form 
 * Grid w/ Floats: simple web page (rows/columns) using positioning/floats
 
+SORTING: 
+* Sorting: Sort table by columns (data as strings & numbers)
+
 ### References
-HTML5 & Liquid Layout: Jon Duckett's HTML & CSS 
+* HTML5 & Liquid Layout: Jon Duckett's HTML & CSS 
+* W3Schools(https://www.w3schools.com)
 
 ### Technologies Used:
 * HTML
