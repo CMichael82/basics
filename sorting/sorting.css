@@ -20,6 +20,10 @@ tr {
 	text-align: center;
 }
 
+tr:first-child {
+	font-weight: bold;
+}
+
 td:first-child {
 	text-transform: capitalize;
 }
@@ -36,7 +40,8 @@ td:first-child {
 	width: 70%;
 }
 
-#search-button, #reset-table {
+#search-button,
+#reset-table {
 	background-color: blue;
 	color: whitesmoke;
 	height: 40px;

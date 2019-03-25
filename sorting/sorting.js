@@ -41,8 +41,6 @@ var stateArray = [
 	}
 ]
 
-var results = [];
-
 displayTable = (objArray) => {
 	var resultsTable = document.getElementById('results-table');
 	for (var i = 0; i < objArray.length; i++) {
@@ -67,7 +65,11 @@ displayTable = (objArray) => {
 
 resetTable = () => {
 	results = [];
-	document.getElementById('results-table').innerHTML = "";
+	var resultsTable = document.getElementById('results-table');
+	while (resultsTable.rows.length > 1) {
+		resultsTable.deleteRow(1);
+	}
+
 	document.getElementById('search-value').value = "";
 	displayTable(stateArray);
 }
@@ -147,7 +149,7 @@ function sortTable(n) {
 
 /////////////SEARCHING//////////////////
 search = (objArray) => {
-	results = [];
+	var results = [];
 	var searchKey = document.getElementById('search-value').value;
 	for (var i = 0; i < objArray.length; i++) {
 		for (key in objArray[i]) {
@@ -157,8 +159,11 @@ search = (objArray) => {
 		}
 	}
 	var resultsTable = document.getElementById('results-table');
-	resultsTable.innerHTML = "";
+	while (resultsTable.rows.length > 1) {
+		resultsTable.deleteRow(1);
+	}
 	displayTable(results);
+	sortTable(0);
 }
 
 displayTable(stateArray);
