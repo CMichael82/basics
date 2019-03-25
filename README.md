@@ -13,7 +13,7 @@ LAYOUTS:
 * Grid w/ Floats: simple web page (rows/columns) using positioning/floats
 
 SORTING: 
-* Sorting: Sort table by columns (data as strings & numbers)
+* Sorting: Sort table by columns (data as strings & numbers) & ability to search all fields.
 
 ### References
 * HTML5 & Liquid Layout: Jon Duckett's HTML & CSS 

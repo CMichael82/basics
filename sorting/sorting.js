@@ -1,64 +1,75 @@
-var objArray = [
+var stateArray = [
 	{
-		state: "California",
-		population: 26,
+		state: "california",
+		population: "26",
 		id: "2cd3"
 	},
 	{
-		state: "Alabama",
-		population: 53,
+		state: "alabama",
+		population: "53",
 		id: "1ab2"
 	},
 	{
-		state: "Kansas",
-		population: 54,
+		state: "kansas",
+		population: "54",
 		id: "4gh5"
 	},
 	{
-		state: "Georgia",
-		population: 45,
+		state: "georgia",
+		population: "45",
 		id: "3ef4"
 	},
 	{
-		state: "Tennessee",
-		population: 133,
+		state: "tennessee",
+		population: "133",
 		id: "6kl7"
 	},
 	{
-		state: "Mississippi",
-		population: 19,
+		state: "mississippi",
+		population: "19",
 		id: "5ij6"
 	},
 	{
-		state: "Wyoming",
-		population: 15,
+		state: "wyoming",
+		population: "15",
 		id: "8op9"
 	},
 	{
-		state: "Virginia",
-		population: 45,
+		state: "virginia",
+		population: "43",
 		id: "7mn8"
-	},
+	}
 ]
 
-var resultsTable = document.getElementById('results-table');
-for (var i = 0; i < objArray.length; i++) {
-	var tr = document.createElement('tr');
-	var tdState = document.createElement('td');
-	var textState = document.createTextNode(objArray[i].state);
-	var tdPopulation = document.createElement('td');
-	var textPopulation = document.createTextNode(objArray[i].population);
-	var tdUniqId = document.createElement('td');
-	var textUniqId = document.createTextNode(objArray[i].id);
+var results = [];
 
-	tdState.appendChild(textState);
-	tdPopulation.appendChild(textPopulation);
-	tdUniqId.appendChild(textUniqId);
-	tr.appendChild(tdState);
-	tr.appendChild(tdPopulation);
-	tr.appendChild(tdUniqId)
+displayTable = (objArray) => {
+	var resultsTable = document.getElementById('results-table');
+	for (var i = 0; i < objArray.length; i++) {
+		var tr = document.createElement('tr');
+		var tdState = document.createElement('td');
+		var textState = document.createTextNode(objArray[i].state);
+		var tdPopulation = document.createElement('td');
+		var textPopulation = document.createTextNode(objArray[i].population);
+		var tdUniqId = document.createElement('td');
+		var textUniqId = document.createTextNode(objArray[i].id);
 
-	resultsTable.appendChild(tr);
+		tdState.appendChild(textState);
+		tdPopulation.appendChild(textPopulation);
+		tdUniqId.appendChild(textUniqId);
+		tr.appendChild(tdState);
+		tr.appendChild(tdPopulation);
+		tr.appendChild(tdUniqId)
+
+		resultsTable.appendChild(tr);
+	}
+}
+
+resetTable = () => {
+	results = [];
+	document.getElementById('results-table').innerHTML = "";
+	document.getElementById('search-value').value = "";
+	displayTable(stateArray);
 }
 
 //SORT TABLE - the (n) specifies by which column to sort. See button onClick in HTML//
@@ -132,5 +143,25 @@ function sortTable(n) {
 		}
 	}
 }
-
 //Sorting function based on W3Schools example//
+
+/////////////SEARCHING//////////////////
+search = (objArray) => {
+	results = [];
+	var searchKey = document.getElementById('search-value').value;
+	for (var i = 0; i < objArray.length; i++) {
+		for (key in objArray[i]) {
+			if (objArray[i][key].indexOf(searchKey) != -1) {
+				results.push(objArray[i]);
+			}
+		}
+	}
+	var resultsTable = document.getElementById('results-table');
+	resultsTable.innerHTML = "";
+	displayTable(results);
+}
+
+displayTable(stateArray);
+
+
+
