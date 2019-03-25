@@ -65,16 +65,18 @@ displayTable = (objArray) => {
 
 resetTable = () => {
 	results = [];
-	var resultsTable = document.getElementById('results-table');
-	while (resultsTable.rows.length > 1) {
-		resultsTable.deleteRow(1);
-	}
-
+	emptyTable();
 	document.getElementById('search-value').value = "";
 	displayTable(stateArray);
 }
 
-//SORT TABLE - the (n) specifies by which column to sort. See button onClick in HTML//
+emptyTable = () => {
+	var resultsTable = document.getElementById('results-table');
+	while (resultsTable.rows.length > 1) {
+		resultsTable.deleteRow(1);
+	}
+}
+//SORT TABLE - the (n) specifies by WHICH COLUMN to sort. See button onClick in HTML//
 function sortTable(n) {
 
 	var rows, i, dataA, dataB, switchNeeded;
@@ -148,25 +150,31 @@ function sortTable(n) {
 //Sorting function based on W3Schools example//
 
 /////////////SEARCHING//////////////////
-search = (objArray) => {
-	var results = [];
+sortThenSearch = (array) => {
+	array.sort(function (a, b) {
+		var nameA = a.state;
+		var nameB = b.state;
+		if (nameA < nameB) {
+			return -1;
+		}
+		if (nameA > nameB) {
+			return 1;
+		}
+		return 0;
+	});
+	console.log("Sorted by Name", array);
 	var searchKey = document.getElementById('search-value').value;
-	for (var i = 0; i < objArray.length; i++) {
-		for (key in objArray[i]) {
-			if (objArray[i][key].indexOf(searchKey) != -1) {
-				results.push(objArray[i]);
+	var results = [];
+	for (var i = 0; i < array.length; i++) {
+		for (key in array[i]) {
+			if (array[i][key].indexOf(searchKey) != -1) {
+				results.push(array[i]);
 			}
 		}
 	}
-	var resultsTable = document.getElementById('results-table');
-	while (resultsTable.rows.length > 1) {
-		resultsTable.deleteRow(1);
-	}
+	emptyTable();
 	displayTable(results);
-	sortTable(0);
 }
 
+
 displayTable(stateArray);
-
-
-
