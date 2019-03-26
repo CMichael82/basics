@@ -151,7 +151,8 @@ function sortTable(n) {
 
 /////////////SEARCHING//////////////////
 sortThenSearch = (array) => {
-	array.sort(function (a, b) {
+	var query = document.getElementById('search-value').value;
+	var sortedArray = array.sort(function (a, b) {
 		var nameA = a.state;
 		var nameB = b.state;
 		if (nameA < nameB) {
@@ -162,18 +163,14 @@ sortThenSearch = (array) => {
 		}
 		return 0;
 	});
-	console.log("Sorted by Name", array);
-	var searchKey = document.getElementById('search-value').value;
-	var results = [];
-	for (var i = 0; i < array.length; i++) {
-		for (key in array[i]) {
-			if (array[i][key].indexOf(searchKey) != -1) {
-				results.push(array[i]);
-			}
-		}
-	}
+	var searchedArray = sortedArray.filter(result => (
+		result.state.includes(query)) ||
+		result.population.includes(query) ||
+		result.id.includes(query)
+	);
+	console.log(searchedArray);
 	emptyTable();
-	displayTable(results);
+	displayTable(searchedArray);
 }
 
 
